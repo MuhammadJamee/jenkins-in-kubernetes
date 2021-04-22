@@ -32,7 +32,7 @@ After installing `kubernetes-plugin` for Jenkins
         * Timeout in seconds for Jenkins connection: 300
 * Save
 
-* Add a Jenkins Pipeline
+* Jenkins Pipeline Without PODtemplate
 
 ```
 node('jenkins-slave') {
@@ -43,4 +43,36 @@ node('jenkins-slave') {
         """)
     }
 }
+```
+* Jenkins Pipeline With PODtemplate
+
+```
+podTemplate(yaml: '''
+apiVersion: v1
+kind: Pod
+spec:
+  containers:
+  - name: docker
+    image: docker:19.03.1-dind
+    resources:
+    requests:
+      cpu: 1000m
+      memory: 1024Mi
+    limits:
+      cpu: 2000m
+      memory: 2048Mi
+    securityContext:
+      privileged: true
+    env:
+      - name: DOCKER_TLS_CERTDIR
+        value: ""
+''') {
+    node(POD_LABEL) {
+        git 'https://github.com/nginxinc/docker-nginx.git'
+        container('docker') {
+            sh 'docker version && cd stable/alpine/ && docker build -t nginx-example .'
+        }
+    }
+}
+
 ```
