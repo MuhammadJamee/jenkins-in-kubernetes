@@ -1,5 +1,6 @@
 # Plugin Needs To Be Installed
-- docker pipeline
+- Docker pipeline
+- Pipeline Maven Integration
 
 # Setting up Jenkins Agent
 
@@ -76,3 +77,7 @@ spec:
 }
 
 ```
+
+reference: 
+https://plugins.jenkins.io/pipeline-maven/
+https://cloud.google.com/sdk/docs/install#deb
