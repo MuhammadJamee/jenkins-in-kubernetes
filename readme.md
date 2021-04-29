@@ -2,6 +2,11 @@
 - Docker pipeline
 - Pipeline Maven Integration
 
+# Google LB Healthcheck 
+
+  /jenkins/login
+
+
 # Setting up Jenkins Agent
 
 After installing `kubernetes-plugin` for Jenkins
@@ -81,3 +86,17 @@ spec:
 reference: 
 https://plugins.jenkins.io/pipeline-maven/
 https://cloud.google.com/sdk/docs/install#deb
+
+---
+  # set-prefix
+        # - name: JENKINS_OPTS
+        #   value: "--prefix=/jenkins"
+        # - name: CASC_JENKINS_CONFIG
+        #   value: /var/jenkins_home/casc.yaml 
+---
+
+---
+  # Jenkins-tunnel
+    # - http://34.102.183.78/jenkins
+    # -  jenkins.jenkins.svc.cluster.local:50000
+---
