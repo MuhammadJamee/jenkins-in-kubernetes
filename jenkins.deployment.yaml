@@ -35,7 +35,10 @@ spec:
         - name: JENKINS_ADMIN_ID
           value: admin
         - name: JENKINS_ADMIN_PASSWORD
-          value: admin
+          value: 4&ttCt7aH#UI!I603IrumY
+        # set-prefix
+        - name: JENKINS_OPTS
+          value: "--prefix=/jenkins"
         # - name: CASC_JENKINS_CONFIG
         #   value: /var/jenkins_home/casc.yaml  
         ports:
